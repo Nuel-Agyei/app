@@ -1,10 +1,25 @@
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { heroVideo, smallHeroVideo } from "../utils";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Hero = () => {
     const [videoSrc, setVideoSrc] = useState(window.innerWidth < 760 ? smallHeroVideo : heroVideo)
+    const handleVideoSrcSet = () => {
+      if(window.innerWidth < 760) {
+        setVideoSrc(smallHeroVideo)
+      }else{
+        setVideoSrc(heroVideo)
+      }
+    }
+
+    useEffect(() => {
+      window.addEventListener ('resize', handleVideoSrcSet)
+      return () => {
+        window.removeEventListener('resize', handleVideoSrcSet)
+      }
+    }, [])
+
     useGSAP(() => {
         gsap.to('#hero', {
             opacity:1,
@@ -20,6 +35,10 @@ const Hero = () => {
             <source src={videoSrc} type="video/mp4" />
           </video>
         </div>
+      </div>
+
+      <div id="cta" className="">
+
       </div>
     </section>
   )
