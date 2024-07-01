@@ -16,7 +16,7 @@ const Model = () => {
             <h1 id='heading' className='section-heading'>Take a closer look.</h1>
 
             <div className='flex flex-col items-center mt-5'>
-                <div className='w-full'></div>
+                <div className='w-full'><h1 className="mt-2">YO BRO</h1></div>
             </div>
         </div>
     </section>
