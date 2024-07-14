@@ -1,12 +1,14 @@
 import * as THREE from 'three'
-import { OrbitControls, PerspectiveCamera, View } from '@react-three/drei'
+import { OrbitControls, PerspectiveCamera, useTexture, View } from '@react-three/drei'
 import React, { Suspense } from 'react'
 import Lights from './Lights'
+import Loader from './Loader'
 import IPhone from './IPhone'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
+import * as THREE from 'three' 
 
-const ModelView = ({index, groupRef, gsapType, controlRef, setRotationSize, size, item}) => {
+const ModelView = ({index, groupRef, gsapType, controlRef, setRotationState, size, item}) => {
   // useGSAP(()=>{
   //   gsap.to('#viewbox', {
   //     ease: 'bounce.in',
@@ -14,6 +16,7 @@ const ModelView = ({index, groupRef, gsapType, controlRef, setRotationSize, size
   //     yoyo: true,
   //   })
   // }, [])
+  
   return (
     <div>
       <View index={index}
@@ -26,11 +29,16 @@ const ModelView = ({index, groupRef, gsapType, controlRef, setRotationSize, size
             <Lights />
             <OrbitControls
               makeDefault
-              // ref={ }
+              ref={controlRef}
+              enableZoom={false}
+              enablePan={false}
+              rotateSpeed={0.4}
+              target={new THREE.Vector3(0, 0, 0)}
+              onEnd={()=>setRotationState(controlRef.current.getAzimuthalAngle()) }
             />
 
             <group ref={groupRef} name={`${index === 1} ? 'small' : 'large'`} position={[0, 0, 0]}>
-            <Suspense fallback={<html><div>loading...</div></html>}>
+            <Suspense fallback={<Loader/>}>
             {/* <IPhone 
             scale={index === 1 ? [15, 15, 15] : [17, 17, 17]}
             item={item}
