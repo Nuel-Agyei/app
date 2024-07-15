@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Features from './components/Features'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Highlights from './components/Highlights'
@@ -15,6 +16,7 @@ const App = () => {
       <Hero/>
       <Highlights/>
       <Model/>
+      <Features/>
     </main>
     </>
   )
