@@ -1,13 +1,14 @@
 import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
 import React from 'react'
 
 const Features = () => {
-useGSAP()(() => {
+useGSAP(() => {
   gsap.to('#features_title', {
     opacity:1,
     y:0
   })
-})
+}, [])
 
   return (
     <secction className="h-full common-padding bg-zinc relative overflow-hidden ">
