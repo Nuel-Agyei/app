@@ -1,14 +1,16 @@
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import React from 'react'
+import { animateWithGsap } from '../utils/animations'
 
 const Features = () => {
 useGSAP(() => {
-  gsap.to('#features_title', {
-    opacity:1,
-    y:0
-  })
-}, [])
+ animateWithGsap('#features_title', {
+   opacity:1,
+   y:0,
+ })
+  }, [])
+}
 
   return (
     <secction className="h-full common-padding bg-zinc relative overflow-hidden ">
@@ -19,6 +21,6 @@ useGSAP(() => {
       </div>
     </secction>
   )
-}
+
 
 export default Features
