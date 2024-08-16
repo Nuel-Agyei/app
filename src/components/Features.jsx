@@ -14,6 +14,10 @@ useGSAP(() => {
  animateWithGsap('.g_grow', {
    scale: 1, opacity: 1, ease: 'power1',
  }, {scrub:5.5,})
+ animateWithGsap(
+  '.g_text',
+  {y:0, opacity: 1,ease: 'power2.inOut',duration: 1}
+)
   }, [])
 
 
@@ -42,6 +46,15 @@ useGSAP(() => {
                 </div>
                 <div className='overflow-hidden flex-1 h-[50vh]'>
                   <img src={explore2Img} alt="Titanium 2" className='feature-video g_grow' />
+                </div>
+              </div>
+              <div className='feature-text-container'>
+                <div className='flex-1 flex-center'>
+                  <p className='feature-text g_text'>
+                    iPhone 15 pro is {''}
+                    <span className='text-white'>the first iPhone to feature an aerospace grade titanium design </span>,
+                    using the alloy that spacecrafts use for missions to mars.
+                  </p>
                 </div>
               </div>
             </div>
